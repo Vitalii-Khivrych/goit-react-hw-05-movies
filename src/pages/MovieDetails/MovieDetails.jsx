@@ -1,11 +1,11 @@
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 
 import { useFetch } from '../../hooks/useFetch';
 import { fetchMovieDetails } from '../../helpers/apiService';
 import { Loader, MovieCard } from 'components';
 
 export const MovieDetails = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // navigate('/404', { replace: true });
 
   const { movieId } = useParams();
@@ -15,8 +15,6 @@ export const MovieDetails = () => {
     error,
     isLoading,
   } = useFetch(fetchMovieDetails, movieId);
-
-  // const { id, flag, capital, countryName, population, languages } = movieDet;
 
   return (
     <section>

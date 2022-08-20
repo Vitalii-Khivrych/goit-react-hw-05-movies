@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 export function MovieCard({ detailsMovie }) {
   const {
-    id,
     title,
     poster_path,
     overview,

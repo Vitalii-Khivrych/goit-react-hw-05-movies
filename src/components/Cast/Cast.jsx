@@ -1,17 +1,13 @@
 import { CastItem } from 'components';
 import { fetchMovieCast } from 'helpers/apiService';
 import { useFetch } from 'hooks/useFetch';
-import { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 export const Cast = () => {
   const { movieId } = useParams();
 
-  const {
-    value: movieCast,
-    error,
-    isLoading,
-  } = useFetch(fetchMovieCast, movieId);
+  const { value: movieCast } = useFetch(fetchMovieCast, movieId);
 
   // useEffect(() => {
   //   const getCastMovie = async () => {

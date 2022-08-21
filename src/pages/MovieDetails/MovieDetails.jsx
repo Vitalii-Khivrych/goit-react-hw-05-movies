@@ -16,6 +16,8 @@ export const MovieDetails = () => {
     isLoading,
   } = useFetch(fetchMovieDetails, movieId);
 
+  // const { id, flag, capital, countryName, population, languages } = movieDet;
+
   return (
     <section>
       <div

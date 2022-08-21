@@ -9,14 +9,19 @@ export function SearchBar({ onSubmit }) {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (query === '') {
+      alert('Empty search');
+      return;
+    }
+
     onSubmit(query);
 
     setQuery('');
   };
 
   return (
-    <Header onSubmit={handleSubmit}>
-      <Form>
+    <Header>
+      <Form onSubmit={handleSubmit}>
         <Button type="submit">
           <BsSearch />
         </Button>
@@ -26,7 +31,7 @@ export function SearchBar({ onSubmit }) {
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search movies"
           value={query}
           onChange={e => setQuery(e.target.value.trim())}
         />

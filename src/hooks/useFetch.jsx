@@ -13,7 +13,7 @@ export const useFetch = (fetch, searchId) => {
         const response = await fetch(searchId);
         // console.log(response);
 
-        const getValue = response.results || response;
+        const getValue = response.results || response.cast || response;
 
         setValue(getValue);
 

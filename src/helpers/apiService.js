@@ -28,6 +28,13 @@ export async function fetchMovieDetails(movieId) {
   return data;
 }
 
+export async function fetchMovieCast(movieId) {
+  const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}`;
+
+  const { data } = await axios.get(url);
+  return data;
+}
+
 // async fetchTrending() {
 //     const url = `${BASE_URL}/trending/movie/day?api_key=${KEY}&page=${this.page}`;
 //     const response = await fetch(url);

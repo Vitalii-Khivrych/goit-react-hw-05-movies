@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-import defaultPoster from '../../images/no-poster.jpg';
+// import defaultPoster from '../../images/no-poster.jpg';
 import { Link } from 'react-router-dom';
 
 export function MovieCard({ detailsMovie }) {

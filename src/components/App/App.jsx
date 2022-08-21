@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Cast, Layout } from 'components';
+import { Cast, Layout, Reviews } from 'components';
 
 import { Home, MovieDetails, Movies } from 'pages';
 
@@ -20,7 +20,7 @@ export function App() {
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<div>MovieReviews</div>} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<div>NotFound</div>} />
       </Route>

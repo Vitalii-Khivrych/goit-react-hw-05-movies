@@ -34,7 +34,7 @@ export const MovieDetails = () => {
 
       {isLoading && <Loader />}
 
-      {!error && <MovieCard detailsMovie={detailsMovie} />}
+      {detailsMovie && <MovieCard detailsMovie={detailsMovie} />}
 
       {error && <p> Error - {error.message} </p>}
 

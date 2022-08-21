@@ -29,14 +29,15 @@ export const Cast = () => {
 
   return (
     <div>
-      {movieCast.map(({ character, name, profile_path }, index) => (
-        <CastItem
-          key={index}
-          character={character}
-          name={name}
-          profile_path={profile_path}
-        />
-      ))}
+      {movieCast &&
+        movieCast.map(({ character, name, profile_path }, index) => (
+          <CastItem
+            key={index}
+            character={character}
+            name={name}
+            profile_path={profile_path}
+          />
+        ))}
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { MoviesGallery } from '../../components';
-// import { useState, useEffect } from 'react';
+import { MoviesGallery } from 'components';
+
 import { fetchTrending } from '../../helpers/apiService';
 import { useFetch } from '../../hooks/useFetch';
 
@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-      <MoviesGallery movies={value} />
+      {value && <MoviesGallery movies={value} />}
     </>
   );
 };

@@ -8,3 +8,4 @@ export * from './MovieCard/MovieCard';
 export * from './SearchBar/SearchBar';
 export * from './Cast/Cast';
 export * from './CastItem/CastItem';
+export * from './Reviews/Reviews';

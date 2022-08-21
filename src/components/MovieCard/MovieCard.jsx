@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-// import defaultPoster from '../../images/no-poster.jpg';
+import defaultPoster from '../../images/no-poster.jpg';
 import { Link } from 'react-router-dom';
 
 export function MovieCard({ detailsMovie }) {
@@ -15,17 +15,15 @@ export function MovieCard({ detailsMovie }) {
   const userScore = Math.round((vote_average / 10) * 100);
   const getGenres = genres.map(({ name }) => name).join(', ');
 
-  // if (!poster_path) return;
-
-  // const imgUrl = poster_path
-  //   ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-  //   : defaultPoster;
+  const imgUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : defaultPoster;
 
   //
 
   return (
     <div>
-      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
+      <img src={imgUrl} alt={title} />
       <div>
         <h1>{title}</h1>
         <p>User score: {userScore}%</p>

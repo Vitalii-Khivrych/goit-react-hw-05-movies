@@ -62,6 +62,7 @@ const BackButtonBox = styled.div`
   font-weight: 500;
 
   margin-bottom: 15px;
+  margin-left: 22px;
   color: black;
   text-decoration: none;
 

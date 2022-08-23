@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
-export const Gallery = styled.ul`
-  margin-top: 16px;
+export const CastList = styled.ul`
   display: grid;
   max-width: calc(100vw - 48px);
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 15px;
   margin-top: 0;
   margin-bottom: 0;
-
+  padding: 0;
   list-style: none;
   margin-left: auto;
   margin-right: auto;

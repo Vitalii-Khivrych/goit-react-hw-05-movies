@@ -2,30 +2,39 @@
 
 import { fetchMovieReviews } from 'helpers/apiService';
 import { useFetch } from 'hooks/useFetch';
-
 import { useParams } from 'react-router-dom';
+import { ReviewsItem, ReviewsTitle, ReviewsText } from './Reviews.styled';
 
-export function Reviews(props) {
+function Reviews() {
   const { movieId } = useParams();
 
-  const { value: reviews } = useFetch(fetchMovieReviews, movieId);
+  const { value: reviews, isLoading } = useFetch(fetchMovieReviews, movieId);
 
-  console.log(reviews);
-
-  if (reviews.length === 0) {
-    return <div>No reviews</div>;
+  if (reviews.length === 0 && !isLoading) {
+    return (
+      <div
+        style={{
+          fontSize: '24px',
+          marginLeft: '20px',
+        }}
+      >
+        No reviews
+      </div>
+    );
   }
 
   return (
-    <div>
+    <ul>
       {reviews.map(({ id, author, content }) => (
-        <div key={id}>
-          <h2>{author}</h2>
-          <p>{content}</p>
-        </div>
+        <ReviewsItem key={id}>
+          <ReviewsTitle>{author}</ReviewsTitle>
+          <ReviewsText>{content}</ReviewsText>
+        </ReviewsItem>
       ))}
-    </div>
+    </ul>
   );
 }
 
 // Reviews.propTypes = {}
+
+export default Reviews;

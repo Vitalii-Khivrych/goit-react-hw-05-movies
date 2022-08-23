@@ -1,6 +1,6 @@
 import { AiOutlineHome } from 'react-icons/ai';
 import { GiFilmStrip } from 'react-icons/gi';
-import { NavLink } from 'react-router-dom';
+import { AppNav, AppLink } from './AppBar.styled';
 
 const navItems = [
   { href: '/', text: 'Home', icon: AiOutlineHome },
@@ -9,13 +9,19 @@ const navItems = [
 
 export const AppBar = () => {
   return (
-    <div>
+    <AppNav>
       {navItems.map(({ href, text, icon: Icon }) => (
-        <NavLink to={href} key={href}>
-          <Icon size="20" />
+        <AppLink to={href} key={href}>
+          <Icon
+            style={{
+              fontSize: '20',
+              marginRight: '8px',
+              // verticalAlign: 'middle',
+            }}
+          />
           {text}
-        </NavLink>
+        </AppLink>
       ))}
-    </div>
+    </AppNav>
   );
 };

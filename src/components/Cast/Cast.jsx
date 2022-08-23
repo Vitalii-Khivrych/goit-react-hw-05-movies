@@ -1,34 +1,51 @@
-import { CastItem } from 'components';
-import { fetchMovieCast } from 'helpers/apiService';
-import { useFetch } from 'hooks/useFetch';
-
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+import { fetchMovieCast } from 'helpers/apiService';
+import { CastItem, Loader } from 'components';
+import { CastList } from './Cast.styled';
+
+const Cast = () => {
+  const [movieCast, setMovieCast] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { movieId } = useParams();
 
-  const { value: movieCast } = useFetch(fetchMovieCast, movieId);
+  // const { value: movieCast } = useFetch(fetchMovieCast, movieId);
 
-  // useEffect(() => {
-  //   const getCastMovie = async () => {
-  //     setIsLoading(true);
+  useEffect(() => {
+    const getCastMovie = async () => {
+      setIsLoading(true);
 
-  //     try {
-  //       const response = await fetchMovieCast(movieId);
+      try {
+        const response = await fetchMovieCast(movieId);
+        setMovieCast(response.cast);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  //       setMovieCast(response.cast);
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+    getCastMovie();
+  }, [movieId]);
 
-  //   getCastMovie();
-  // }, [movieId]);
+  if (movieCast.length === 0 && !isLoading) {
+    return (
+      <div
+        style={{
+          fontSize: '24px',
+          marginLeft: '20px',
+        }}
+      >
+        No cast
+      </div>
+    );
+  }
 
   return (
-    <div>
+    <CastList>
+      {isLoading && <Loader />}
       {movieCast &&
         movieCast.map(({ character, name, profile_path }, index) => (
           <CastItem
@@ -38,6 +55,8 @@ export const Cast = () => {
             profile_path={profile_path}
           />
         ))}
-    </div>
+    </CastList>
   );
 };
+
+export default Cast;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { MoviesGalleryItem } from 'components';
 import { Gallery } from './MoviesGallery.styled';
 
-export function MoviesGallery({ movies, getImg }) {
+export function MoviesGallery({ movies }) {
   return (
     <Gallery>
       {movies.map(({ id, poster_path, title }) => (
@@ -23,5 +23,4 @@ MoviesGallery.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
-  largeImageURL: PropTypes.string,
 };

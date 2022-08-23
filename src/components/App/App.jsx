@@ -1,28 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
 
-import { Cast, Layout, Reviews } from 'components';
+import { Layout } from 'components';
 
-import { Home, MovieDetails, Movies } from 'pages';
-
-// import { useState, useEffect } from 'react';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import api from '../../helpers/apiService';
-
-// import { AppWrap } from './App.styled';
+const Home = lazy(() => import('../../pages/Home'));
+const Movies = lazy(() => import('../../pages/Movies'));
+const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+const Cast = lazy(() => import('../Cast/Cast'));
+const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 export function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        {/* <Route path="home" element={<div>Home</div>} /> */}
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<div>NotFound</div>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

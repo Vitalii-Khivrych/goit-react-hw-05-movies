@@ -6,8 +6,8 @@ export const Loader = () => {
     <LoaderWrap>
       <Circles
         color=" #303f9f"
-        height="50"
-        width="50"
+        height="110"
+        width="110"
         ariaLabel="three-dots-loading"
       />
     </LoaderWrap>

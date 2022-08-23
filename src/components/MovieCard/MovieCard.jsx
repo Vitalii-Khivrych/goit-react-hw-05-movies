@@ -1,8 +1,20 @@
-// import PropTypes from 'prop-types';
-import defaultPoster from '../../images/no-poster.jpg';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+// import { useLocation } from 'react-router-dom';
+import { AiOutlineArrowDown } from 'react-icons/ai';
 
-export function MovieCard({ detailsMovie }) {
+import defaultPoster from '../../images/no-poster.jpg';
+import {
+  Container,
+  CardImage,
+  Box,
+  CardTitle,
+  CardText,
+  SecondCardTitle,
+  LinkWrap,
+  CardLink,
+} from './MovieCard.styled';
+
+export function MovieCard({ detailsMovie, location }) {
   const {
     title,
     poster_path,
@@ -10,7 +22,8 @@ export function MovieCard({ detailsMovie }) {
     vote_average,
     genres = [],
   } = detailsMovie;
-  // console.log(detailsMovie);
+
+  // console.log(location);
 
   const userScore = Math.round((vote_average / 10) * 100);
   const getGenres = genres.map(({ name }) => name).join(', ');
@@ -19,26 +32,47 @@ export function MovieCard({ detailsMovie }) {
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : defaultPoster;
 
-  //
-
   return (
-    <div>
-      <img src={imgUrl} alt={title} />
-      <div>
-        <h1>{title}</h1>
-        <p>User score: {userScore}%</p>
-        <h2>Overview</h2>
-        <p>{overview}</p>
-        <h2>Genres</h2>
-        <p>{getGenres}</p>
-        <div>
-          <h2>Additional Information</h2>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
-        </div>
-      </div>
-    </div>
+    <>
+      <Container>
+        <CardImage src={imgUrl} alt={title} />
+        <Box>
+          <CardTitle>{title}</CardTitle>
+          <CardText>User score: {userScore}%</CardText>
+          <SecondCardTitle>Overview</SecondCardTitle>
+          <CardText>{overview}</CardText>
+          <SecondCardTitle>Genres</SecondCardTitle>
+          <CardText>{getGenres}</CardText>
+        </Box>
+      </Container>
+      <LinkWrap>
+        <SecondCardTitle>Additional Information</SecondCardTitle>
+        <CardLink to="cast" state={{ from: location }}>
+          Cast
+          <AiOutlineArrowDown
+            style={{
+              fontSize: '22',
+              marginLeft: '6px',
+              verticalAlign: 'middle',
+            }}
+          />
+        </CardLink>
+        <CardLink to="reviews" state={{ from: location }}>
+          Reviews
+          <AiOutlineArrowDown
+            style={{
+              fontSize: '22',
+              marginLeft: '6px',
+              verticalAlign: 'middle',
+            }}
+          />
+        </CardLink>
+      </LinkWrap>
+    </>
   );
 }
 
-// MovieCard.propTypes = {};
+MovieCard.propTypes = {
+  detailsMovie: PropTypes.object,
+  // location: PropTypes.object.isRequired,
+};

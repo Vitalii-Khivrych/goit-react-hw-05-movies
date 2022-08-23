@@ -40,7 +40,6 @@ export function SearchBar({ onSubmit }) {
         </Button>
 
         <Input
-          className="input"
           type="text"
           autoComplete="off"
           autoFocus

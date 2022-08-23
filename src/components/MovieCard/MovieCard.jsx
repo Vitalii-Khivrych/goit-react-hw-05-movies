@@ -74,5 +74,5 @@ export function MovieCard({ detailsMovie, location }) {
 
 MovieCard.propTypes = {
   detailsMovie: PropTypes.object,
-  // location: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
